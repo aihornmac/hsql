@@ -66,6 +66,7 @@
       "order": [
         "/^propTypes$/",
         "/^defaultProps$/",
+        "/^contextTypes$/",
         "/^getMeteorData$/",
         "lifecycle",
         "everything-else",

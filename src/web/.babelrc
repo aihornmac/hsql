@@ -1,15 +1,17 @@
 {
   "presets": [
-    "es2017",
-    "es2016",
+    "latest",
+    "stage-0",
     "react"
   ],
   "plugins": [
     "transform-decorators-legacy",
-    "syntax-trailing-function-commas",
-    "transform-es2015-modules-commonjs",
-    "transform-es2015-destructuring",
-    "transform-es2015-block-scoping",
+    ["import", [
+      {
+        "libraryName": "antd",
+        "style": "css"
+      }
+    ]],
     ["module-resolver", {
       "alias": {
         "components": "./src/web/components",

@@ -1,8 +1,11 @@
-const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
+const webpack = require('webpack');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const chalk = require('chalk');
 
 const projectPath = path.join(__dirname, '..', '..', '..');
+const nodeModulesPath = path.join(projectPath, 'node_modules');
 const sourcePath = path.join(projectPath, 'src');
 const buildPath = path.join(projectPath, 'build');
 const webPath = path.join(sourcePath, 'web');
@@ -65,7 +68,12 @@ module.exports = {
         test: /\.css$/,
         loader: 'style!css?sourceMap&modules&importLoaders=1&localIdentName=newa_[local]_[hash:base64:5]!postcss',
         include: webPath,
-      }
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css',
+        include: nodeModulesPath
+      },
     ]
   },
   postcss: () => [
@@ -77,6 +85,14 @@ module.exports = {
     })
   ],
   plugins: [
+    new ProgressBarPlugin({
+      format: `${chalk.blue.bold('Building client bundle')} [:bar] ${chalk.green.bold(':percent')} (:elapsed seconds)`,
+      renderThrottle: 100,
+      summary: false,
+      customSummary: t => {
+        return console.log(chalk.blue.bold(`Built client in ${t}.`));
+      }
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
