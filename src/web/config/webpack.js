@@ -13,9 +13,10 @@ const babelConfig = JSON.parse(
   )
 );
 const networkConfig = require('./network');
+const accessConfig = require('./access');
 
 const devServer = {
-  publicPath: `http://${networkConfig.devHost}:${networkConfig.devPort}/static`,
+  publicPath: accessConfig.devServer.publicPath,
   host: networkConfig.devHost,
   hot: true,
   historyApiFallback: true,
@@ -35,7 +36,7 @@ module.exports = {
   entry: {
     app: [
       'react-hot-loader/patch',
-      `webpack-dev-server/client?http://${devServer.host}:${devServer.port}`,
+      `webpack-dev-server/client?${accessConfig.devServer.socketPath}`,
       'webpack/hot/dev-server',
       // 'babel-polyfill',
       path.join(webPath, 'client')
@@ -45,7 +46,7 @@ module.exports = {
     path: buildPath,
     filename: 'bundle.js',
     sourceMapFilename: '[file].map',
-    publicPath: `http://${devServer.host}:${devServer.port}/static/`
+    publicPath: accessConfig.publicPath
   },
   module: {
     loaders: [
