@@ -1,0 +1,22 @@
+{
+  "presets": [
+    "es2017",
+    "es2016",
+    "react"
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+    "syntax-trailing-function-commas",
+    "transform-es2015-modules-commonjs",
+    "transform-es2015-destructuring",
+    "transform-es2015-block-scoping",
+    ["module-resolver", {
+      "alias": {
+        "components": "./src/web/components",
+        "containers": "./src/web/containers",
+        "routes": "./src/web/routes",
+        "data": "./src/web/data"
+      }
+    }]
+  ]
+}
