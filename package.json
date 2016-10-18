@@ -42,6 +42,7 @@
     "mobx": "^2.6.0",
     "mobx-react": "^3.5.8",
     "node-sass": "^3.10.1",
+    "normalize.css": "^5.0.0",
     "postcss-discard-comments": "^2.0.4",
     "postcss-loader": "^1.0.0",
     "postcss-nested": "^1.0.0",

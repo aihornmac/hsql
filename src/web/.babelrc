@@ -17,7 +17,8 @@
         "components": "./src/web/components",
         "containers": "./src/web/containers",
         "routes": "./src/web/routes",
-        "data": "./src/web/data"
+        "data": "./src/web/data",
+        "styles": "./src/web/styles"
       }
     }]
   ]
